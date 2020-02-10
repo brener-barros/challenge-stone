@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        customerList = mutableListOf()
-        setCustomList()
+        setCustomerList()
         setupRecycler()
     }
 
-    fun setCustomList() {
+    fun setCustomerList() {
         val gson = Gson()
         val customerType = object : TypeToken<MutableList<Customer>>() {}.type
         customerList = gson.fromJson(MockedJson.value, customerType)
