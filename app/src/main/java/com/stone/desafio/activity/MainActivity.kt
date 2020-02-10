@@ -27,11 +27,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         customerList = mutableListOf()
+        setCustomList()
+        setupRecycler()
+    }
 
+    fun setCustomList() {
         val gson = Gson()
-        val mutableListTutorialType = object : TypeToken<MutableList<Customer>>() {}.type
-        customerList = gson.fromJson(MockedJson.value, mutableListTutorialType)
+        val customerType = object : TypeToken<MutableList<Customer>>() {}.type
+        customerList = gson.fromJson(MockedJson.value, customerType)
+    }
 
+    fun setupRecycler() {
         viewManager = LinearLayoutManager(this)
         viewAdapter = CustomerAdapter(customerList)
 
